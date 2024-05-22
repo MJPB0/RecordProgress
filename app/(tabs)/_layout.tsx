@@ -1,34 +1,47 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { Tabs, router } from "expo-router";
+import React from "react";
+import { Button } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  const onLogout = () => router.push("/logout");
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
+        tabBarActiveTintColor: "blue",
+        header: () => (
+          <SafeAreaProvider>
+            <Button title="Logout" onPress={onLogout} />
+          </SafeAreaProvider>
+        ),
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="statistics"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+          title: "Statistics",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome size={28} name="anchor" color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="dashboard"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+          title: "Dashboard",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome size={28} name="home" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="timer"
+        options={{
+          title: "Timer",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome size={28} name="clock-o" color={color} />
           ),
         }}
       />

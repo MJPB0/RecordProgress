@@ -3,20 +3,19 @@ import { Text } from "react-native";
 import "react-native-reanimated";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-export default function Layout() {
+export default function AuthLayout() {
   return (
     <Stack
       screenOptions={{
         header: () => (
           <SafeAreaProvider>
-            <Text>HEADER</Text>
+            <Text>AUTH</Text>
           </SafeAreaProvider>
         ),
       }}
     >
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="(error-states)" />
-      <Stack.Screen name="(auth)" />
+      <Stack.Screen name="login" />
+      <Stack.Screen name="logout" />
     </Stack>
   );
 }
