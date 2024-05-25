@@ -1,10 +1,14 @@
-import { Text, StyleSheet, Button } from "react-native";
+import { Text, Button } from "react-native";
 import "../styles/unistyles";
 import { SplashScreen, router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { useStyles } from "react-native-unistyles";
+import { stylesheet } from "./stylesheet";
 
 export default function Landing() {
+  const { styles } = useStyles(stylesheet);
+
   const handleContinueClicked = () => {
     router.push("/login");
   };
@@ -22,11 +26,3 @@ export default function Landing() {
     </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});

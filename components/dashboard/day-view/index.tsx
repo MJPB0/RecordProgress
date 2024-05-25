@@ -1,14 +1,14 @@
-import { Text } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useStyles } from "react-native-unistyles";
-import { stylesheet } from "../stylesheet";
+import { stylesheet } from "./stylesheet";
+import { Text } from "react-native";
 
-export default function Timer() {
+export default function DayView() {
   const { styles } = useStyles(stylesheet);
 
   return (
     <SafeAreaProvider style={styles.container}>
-      <Text>TIMER</Text>
+      <Text>DAY VIEW</Text>
     </SafeAreaProvider>
   );
 }

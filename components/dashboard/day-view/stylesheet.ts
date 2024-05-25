@@ -8,10 +8,6 @@ export const stylesheet = createStyleSheet((theme) => ({
     padding: 20,
     backgroundColor: theme.colors.background,
   },
-  tabBarContainer: {
-    borderWidth: 0,
-    height: 64,
-  },
   topBarImage: {
     width: 42,
     height: 42,
