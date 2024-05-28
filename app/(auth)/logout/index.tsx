@@ -1,8 +1,8 @@
 import { router } from "expo-router";
-import { Text } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useStyles } from "react-native-unistyles";
 import { stylesheet } from "./stylesheet";
+import ThemedText from "../../../components/shared/ThemedText";
 
 export default function Logout() {
   const { styles } = useStyles(stylesheet);
@@ -13,7 +13,7 @@ export default function Logout() {
 
   return (
     <SafeAreaProvider style={styles.container}>
-      <Text>Logging out...</Text>
+      <ThemedText type="title">Logging out...</ThemedText>
     </SafeAreaProvider>
   );
 }

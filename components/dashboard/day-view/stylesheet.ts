@@ -5,11 +5,7 @@ export const stylesheet = createStyleSheet((theme) => ({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    padding: 20,
+    padding: theme.paddings.xl,
     backgroundColor: theme.colors.background,
-  },
-  topBarImage: {
-    width: 42,
-    height: 42,
   },
 }));

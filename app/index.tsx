@@ -1,10 +1,10 @@
-import { Text, Button } from "react-native";
+import { Button } from "react-native";
 import "../styles/unistyles";
-import { SplashScreen, router } from "expo-router";
-import { StatusBar } from "expo-status-bar";
+import { router } from "expo-router";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useStyles } from "react-native-unistyles";
 import { stylesheet } from "./stylesheet";
+import ThemedText from "../components/shared/ThemedText";
 
 export default function Landing() {
   const { styles } = useStyles(stylesheet);
@@ -13,16 +13,10 @@ export default function Landing() {
     router.push("/login");
   };
 
-  SplashScreen.preventAutoHideAsync();
-  setTimeout(() => {
-    SplashScreen.hideAsync();
-  }, 2000);
-
   return (
     <SafeAreaProvider style={styles.container}>
-      <Text>ROOT</Text>
+      <ThemedText type="title">ROOT</ThemedText>
       <Button title="CONTINUE" onPress={handleContinueClicked} />
-      <StatusBar />
     </SafeAreaProvider>
   );
 }

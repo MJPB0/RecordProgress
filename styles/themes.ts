@@ -1,34 +1,5 @@
-interface Theme {
-  colors: {
-    background: string;
-    highlight: string;
-    buttonPopup: {
-      background: string;
-      text: string;
-      highlight: string;
-    };
-    day: {
-      text: string;
-      note: {
-        background: string;
-        text: string;
-      };
-      monday: string;
-      tuesday: string;
-      wednesday: string;
-      thursday: string;
-      friday: string;
-      saturday: string;
-      sunday: string;
-    };
-  };
-  margins: {
-    sm: number;
-    md: number;
-    lg: number;
-    xl: number;
-  };
-}
+import { Theme } from "./theme.types";
+
 export const defaultTheme: Theme = {
   colors: {
     background: "#252A34",
@@ -52,11 +23,44 @@ export const defaultTheme: Theme = {
       saturday: "#0946E1",
       sunday: "#A04B49",
     },
+    text: {
+      bright: "#ffffff",
+      dark: "#000000",
+    },
+  },
+  font: {
+    sizes: {
+      sm: 12,
+      md: 16,
+      lg: 20,
+      xl: 24,
+      xxl: 36,
+      xxxl: 64,
+    },
+    family: "Harmattan",
+    weight: {
+      regular: "400",
+      bold: "700",
+    },
+  },
+  imageSizes: {
+    sm: 24,
+    md: 36,
+    lg: 48,
+    xl: 64,
+    xxl: 96,
+    xxxl: 128,
+  },
+  paddings: {
+    sm: 5,
+    md: 12,
+    lg: 16,
+    xl: 20,
   },
   margins: {
-    sm: 2,
-    md: 4,
-    lg: 8,
-    xl: 12,
+    sm: 5,
+    md: 12,
+    lg: 20,
+    xl: 50,
   },
 };
