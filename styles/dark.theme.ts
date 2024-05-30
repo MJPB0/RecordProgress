@@ -1,6 +1,7 @@
 import { Theme } from "./theme.types";
 
-export const defaultTheme: Theme = {
+// TODO define values
+export const darkTheme: Theme = {
   colors: {
     background: "#252A34",
     highlight: "#A04B49",

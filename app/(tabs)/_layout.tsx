@@ -1,14 +1,14 @@
 import { Tabs, router } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { useStyles } from "react-native-unistyles";
-import { stylesheet } from "./stylesheet";
+import { Styles, stylesheet } from "./stylesheet";
 import ThemedImage from "../../components/shared/ThemedImage";
-import TabsHeader from "../../components/headers/tabs-header/TabsHeader";
+import TabsHeader from "../../components/headers/tabs-header";
+import { useStyles } from "../../hooks/useStyles";
 
 const imagesFolderRoute = "../../assets/images";
 
 export default function TabLayout() {
-  const { theme, styles } = useStyles(stylesheet);
+  const { styles, theme } = useStyles<Styles>(stylesheet);
   const [view, setView] = useState<"day" | "month">("day");
   const [isDashboard, setIsDashboard] = useState(true);
 
