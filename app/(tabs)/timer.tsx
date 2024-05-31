@@ -2,7 +2,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import ThemedText from "../../components/shared/ThemedText";
 import ThemedImage from "../../components/shared/ThemedImage";
 import { useStyles } from "../../hooks/useStyles";
-import { Styles, stylesheet } from "./stylesheet";
+import { Styles, stylesheet } from "./styles/timer.styles";
 
 export default function Timer() {
   const { styles } = useStyles<Styles>(stylesheet);

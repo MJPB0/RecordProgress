@@ -1,8 +1,8 @@
 import { router } from "expo-router";
 import { Button } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { Styles, stylesheet } from "./stylesheet";
-import { useStyles } from "../../../hooks/useStyles";
+import { useStyles } from "../../hooks/useStyles";
+import { Styles, stylesheet } from "./styles/login.styles";
 
 export default function Login() {
   const { styles } = useStyles<Styles>(stylesheet);

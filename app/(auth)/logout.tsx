@@ -1,8 +1,8 @@
 import { router } from "expo-router";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { Styles, stylesheet } from "./stylesheet";
-import ThemedText from "../../../components/shared/ThemedText";
-import { useStyles } from "../../../hooks/useStyles";
+import ThemedText from "../../components/shared/ThemedText";
+import { useStyles } from "../../hooks/useStyles";
+import { Styles, stylesheet } from "./styles/logout.styles";
 
 export default function Logout() {
   const { styles } = useStyles<Styles>(stylesheet);

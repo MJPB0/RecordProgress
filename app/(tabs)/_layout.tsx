@@ -1,15 +1,14 @@
 import { Tabs, router } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { Styles, stylesheet } from "./stylesheet";
 import ThemedImage from "../../components/shared/ThemedImage";
 import TabsHeader from "../../components/headers/tabs-header";
 import { useStyles } from "../../hooks/useStyles";
-import { Dimensions } from "react-native";
+import { Styles, stylesheet } from "./styles/layout.styles";
 
 const imagesFolderRoute = "../../assets/images";
 
 export default function TabLayout() {
-  const { theme } = useStyles<Styles>(stylesheet);
+  const { theme, styles } = useStyles<Styles>(stylesheet);
   const [view, setView] = useState<"day" | "month">("day");
   const [isDashboard, setIsDashboard] = useState(true);
 
@@ -25,35 +24,11 @@ export default function TabLayout() {
         header: () => (
           <TabsHeader view={view} setView={setView} isDashboard={isDashboard} />
         ),
-        tabBarStyle: {
-          position: "absolute",
-          borderTopWidth: 0,
-          elevation: 0,
-          borderTopColor: theme.colors.background,
-          backgroundColor: theme.colors.background,
-          paddingBottom: 0,
-          marginBottom: 35,
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          height: theme.sizes.xl,
-          // 3tabs * their width + 6 * their margin
-          width: 3 * theme.sizes.xl + 6 * theme.margins.lg,
-          marginLeft:
-            (Dimensions.get("window").width -
-              (3 * theme.sizes.xl + 6 * theme.margins.lg)) /
-            2,
-        },
+        tabBarStyle: styles.tabBar,
+        tabBarItemStyle: styles.tabBarItem,
         tabBarShowLabel: false,
         tabBarActiveBackgroundColor: theme.colors.tabBar.highlight,
         tabBarInactiveBackgroundColor: theme.colors.tabBar.iconBackground,
-        tabBarItemStyle: {
-          borderRadius: 128,
-          width: theme.sizes.xl,
-          height: theme.sizes.xl,
-          marginHorizontal: theme.margins.lg,
-        },
       }}
     >
       <Tabs.Screen

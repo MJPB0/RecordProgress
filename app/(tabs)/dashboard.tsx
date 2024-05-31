@@ -1,5 +1,5 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Styles, stylesheet } from "./stylesheet";
+import { Styles, stylesheet } from "./styles/dashboard.styles";
 import DayView from "../../components/dashboard/day-view";
 import MonthView from "../../components/dashboard/month-view";
 import { useLocalSearchParams } from "expo-router";
