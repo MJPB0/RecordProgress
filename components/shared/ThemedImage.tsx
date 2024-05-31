@@ -1,41 +1,53 @@
 import { Image, ImageProps } from "expo-image";
 import { Theme } from "../../styles/theme.types";
 import { useStyles } from "../../hooks/useStyles";
-import { Pressable, SafeAreaView } from "react-native";
+import {
+  Pressable,
+  PressableProps,
+  SafeAreaView,
+  ViewProps,
+} from "react-native";
 
 export type ThemedImageProps = ImageProps & {
-  size?: keyof Theme["imageSizes"];
-  pressable?: boolean;
+  size?: keyof Theme["sizes"];
+  isPressable?: boolean;
+  pressableProps?: PressableProps;
   onPress?: () => void;
-  safeAreaView?: boolean;
+  isSafeAreaView?: boolean;
+  safeAreaViewProps?: ViewProps;
 };
 
 export default function ThemedImage({
   style,
   size = "md",
-  pressable,
+  isPressable,
+  pressableProps,
   onPress,
-  safeAreaView,
+  isSafeAreaView,
+  safeAreaViewProps,
   ...rest
 }: ThemedImageProps) {
   const { theme } = useStyles();
 
   let themedImage = (
     <Image
-      style={[
-        { width: theme.imageSizes[size], height: theme.imageSizes[size] },
-        style,
-      ]}
+      style={[{ width: theme.sizes[size], height: theme.sizes[size] }, style]}
       {...rest}
     />
   );
 
-  if (pressable) {
-    themedImage = <Pressable onPress={onPress}>{themedImage}</Pressable>;
+  if (isPressable) {
+    themedImage = (
+      <Pressable onPress={onPress} {...pressableProps}>
+        {themedImage}
+      </Pressable>
+    );
   }
 
-  if (safeAreaView) {
-    themedImage = <SafeAreaView>{themedImage}</SafeAreaView>;
+  if (isSafeAreaView) {
+    themedImage = (
+      <SafeAreaView {...safeAreaViewProps}>{themedImage}</SafeAreaView>
+    );
   }
 
   return themedImage;

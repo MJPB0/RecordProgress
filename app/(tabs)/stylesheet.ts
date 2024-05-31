@@ -6,7 +6,6 @@ import { Theme } from "../../styles/theme.types";
 export interface Styles extends Style {
   container: ViewStyle;
   tabBarContainer: ViewStyle;
-  topBarContainer: ViewStyle;
   workInProgressText: TextStyle;
 }
 
@@ -16,20 +15,18 @@ export const stylesheet = (theme: Theme) =>
       flex: 1,
       justifyContent: "center",
       alignItems: "center",
-      padding: theme.paddings.xl,
       backgroundColor: theme.colors.background,
     },
     tabBarContainer: {
+      position: "absolute",
       borderTopWidth: 0,
-      borderTopColor: theme.colors.background,
       elevation: 0,
-    },
-    topBarContainer: {
-      flex: 1,
-      flexDirection: "row",
-      justifyContent: "space-between",
-      padding: theme.paddings.xl,
-      backgroundColor: theme.colors.background,
+      borderTopColor: theme.colors.background,
+      width: "auto",
+      height: "auto",
+      marginHorizontal: "25%",
+      paddingBottom: 0,
+      marginBottom: 30,
     },
     workInProgressText: {
       marginTop: theme.margins.md,

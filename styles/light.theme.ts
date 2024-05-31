@@ -3,7 +3,11 @@ import { Theme } from "./theme.types";
 export const lightTheme: Theme = {
   colors: {
     background: "#252A34",
-    highlight: "#A04B49",
+    tabBar: {
+      background: "#252A34",
+      iconBackground: "#F5F5F5",
+      highlight: "#A04B49",
+    },
     buttonPopup: {
       background: "#252A34",
       text: "#000000",
@@ -15,13 +19,6 @@ export const lightTheme: Theme = {
         background: "#F5F5F5",
         text: "#000000",
       },
-      monday: "#DCC238",
-      tuesday: "#C0834B",
-      wednesday: "#59AB7F",
-      thursday: "#2ABBBB",
-      friday: "#5534B1",
-      saturday: "#0946E1",
-      sunday: "#A04B49",
     },
     text: {
       bright: "#ffffff",
@@ -43,7 +40,8 @@ export const lightTheme: Theme = {
       bold: "700",
     },
   },
-  imageSizes: {
+  sizes: {
+    xs: 16,
     sm: 24,
     md: 36,
     lg: 48,
@@ -53,14 +51,15 @@ export const lightTheme: Theme = {
   },
   paddings: {
     sm: 5,
-    md: 12,
-    lg: 16,
+    md: 10,
+    lg: 15,
     xl: 20,
   },
   margins: {
     sm: 5,
-    md: 12,
+    md: 10,
     lg: 20,
     xl: 50,
+    xxl: 65,
   },
 };

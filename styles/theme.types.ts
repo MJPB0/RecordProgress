@@ -12,7 +12,11 @@ export type FontWeight =
 export interface Theme {
   colors: {
     background: string;
-    highlight: string;
+    tabBar: {
+      background: string;
+      iconBackground: string;
+      highlight: string;
+    };
     buttonPopup: {
       background: string;
       text: string;
@@ -24,13 +28,6 @@ export interface Theme {
         background: string;
         text: string;
       };
-      monday: string;
-      tuesday: string;
-      wednesday: string;
-      thursday: string;
-      friday: string;
-      saturday: string;
-      sunday: string;
     };
     text: {
       bright: string;
@@ -52,7 +49,8 @@ export interface Theme {
       bold: FontWeight;
     };
   };
-  imageSizes: {
+  sizes: {
+    xs: number;
     sm: number;
     md: number;
     lg: number;
@@ -65,6 +63,7 @@ export interface Theme {
     md: number;
     lg: number;
     xl: number;
+    xxl: number;
   };
   paddings: {
     sm: number;

@@ -2,13 +2,24 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Styles, stylesheet } from "./stylesheet";
 import ThemedText from "../../shared/ThemedText";
 import { useStyles } from "../../../hooks/useStyles";
+import ThemedImage from "../../shared/ThemedImage";
 
 export default function MonthView() {
   const { styles } = useStyles<Styles>(stylesheet);
 
   return (
     <SafeAreaProvider style={styles.container}>
-      <ThemedText type="subTitle">MONTH VIEW</ThemedText>
+      <ThemedImage
+        size="xxxl"
+        source={require(`../../../assets/images/work-in-progress.png`)}
+      />
+
+      <ThemedText style={styles.workInProgressText} type="title">
+        DASHBOARD
+      </ThemedText>
+      <ThemedText style={styles.workInProgressText} type="subTitle">
+        MONTH VIEW
+      </ThemedText>
     </SafeAreaProvider>
   );
 }

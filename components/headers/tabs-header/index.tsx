@@ -1,4 +1,3 @@
-import { Pressable } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import ThemedImage from "../../shared/ThemedImage";
 import { router } from "expo-router";
@@ -18,7 +17,7 @@ export default function TabsHeader({
   view,
   setView,
 }: TabsHeaderProps) {
-  const { styles, theme } = useStyles<Styles>(stylesheet);
+  const { styles } = useStyles<Styles>(stylesheet);
 
   const onLogout = () => router.replace("/logout");
   const handleViewChange = () => {
@@ -28,29 +27,33 @@ export default function TabsHeader({
   return (
     <SafeAreaProvider style={styles.topBarContainer}>
       <ThemedImage
-        size="md"
-        pressable
-        safeAreaView
+        size="lg"
+        isPressable
+        isSafeAreaView
         source={require(`${imagesFolderRoute}/burger.png`)}
       />
-      <SafeAreaView>
+
+      <SafeAreaView style={styles.avatarIconContainer}>
         <ThemedImage
-          size="md"
-          pressable
+          size="lg"
+          isPressable
           onPress={onLogout}
           source={require(`${imagesFolderRoute}/avatar.png`)}
         />
+
         {isDashboard && (
           <ThemedImage
-            size="md"
-            pressable
+            size="lg"
+            isPressable
             onPress={handleViewChange}
+            pressableProps={{
+              style: styles.switch,
+            }}
             source={
               view === "day"
                 ? require(`${imagesFolderRoute}/switch.png`)
                 : require(`${imagesFolderRoute}/switch-reverse.png`)
             }
-            style={{ marginTop: theme.margins.lg }}
           />
         )}
       </SafeAreaView>

@@ -11,10 +11,11 @@ export default function Statistics() {
     <SafeAreaProvider style={styles.container}>
       <ThemedImage
         size="xxxl"
+        style={{ marginTop: 12 }}
         source={require(`../../assets/images/work-in-progress.png`)}
       />
 
-      <ThemedText style={styles.workInProgressText} type="headline">
+      <ThemedText style={styles.workInProgressText} type="title">
         STATISTICS
       </ThemedText>
     </SafeAreaProvider>
