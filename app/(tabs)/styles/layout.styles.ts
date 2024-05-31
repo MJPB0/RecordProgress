@@ -32,7 +32,7 @@ export const stylesheet = (theme: Theme) =>
         2,
     },
     tabBarItem: {
-      borderRadius: 128,
+      borderRadius: theme.sizes.xl / 2,
       width: theme.sizes.xl,
       height: theme.sizes.xl,
       marginHorizontal: theme.margins.lg,
