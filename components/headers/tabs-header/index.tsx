@@ -1,8 +1,10 @@
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
 import ThemedImage from "../../shared/ThemedImage";
 import { router } from "expo-router";
 import { Styles, stylesheet } from "./stylesheet";
 import { useStyles } from "../../../hooks/useStyles";
+import { View } from "react-native";
+import PopupMenu from "../../shared/PopupMenu";
 
 interface TabsHeaderProps {
   isDashboard: boolean;
@@ -25,15 +27,21 @@ export default function TabsHeader({
   };
 
   return (
-    <SafeAreaProvider style={styles.topBarContainer}>
-      <ThemedImage
-        size="lg"
-        isPressable
-        isSafeAreaView
-        source={require(`${imagesFolderRoute}/burger.png`)}
+    <SafeAreaView style={styles.topBarContainer}>
+      <PopupMenu
+        options={{
+          text: "Settings",
+          onPress: () => console.log("Settings pressed"),
+        }}
+        menuTrigger={
+          <ThemedImage
+            size="lg"
+            source={require(`${imagesFolderRoute}/burger.png`)}
+          />
+        }
       />
 
-      <SafeAreaView style={styles.avatarIconContainer}>
+      <View style={styles.avatarIconContainer}>
         <ThemedImage
           size="lg"
           isPressable
@@ -56,7 +64,7 @@ export default function TabsHeader({
             }
           />
         )}
-      </SafeAreaView>
-    </SafeAreaProvider>
+      </View>
+    </SafeAreaView>
   );
 }

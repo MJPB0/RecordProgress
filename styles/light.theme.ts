@@ -37,6 +37,7 @@ export const lightTheme: Theme = {
     family: "Harmattan",
     weight: {
       regular: "400",
+      semiBold: "600",
       bold: "700",
     },
   },

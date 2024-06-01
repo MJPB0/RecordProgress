@@ -37,6 +37,7 @@ export const darkTheme: Theme = {
     family: "Harmattan",
     weight: {
       regular: "400",
+      semiBold: "500",
       bold: "700",
     },
   },

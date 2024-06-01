@@ -46,6 +46,7 @@ export interface Theme {
     family: string;
     weight: {
       regular: FontWeight;
+      semiBold: FontWeight;
       bold: FontWeight;
     };
   };

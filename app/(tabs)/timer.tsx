@@ -1,4 +1,4 @@
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
 import ThemedText from "../../components/shared/ThemedText";
 import ThemedImage from "../../components/shared/ThemedImage";
 import { useStyles } from "../../hooks/useStyles";
@@ -8,7 +8,7 @@ export default function Timer() {
   const { styles } = useStyles<Styles>(stylesheet);
 
   return (
-    <SafeAreaProvider style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <ThemedImage
         size="xxxl"
         style={{ marginTop: 12 }}
@@ -18,6 +18,6 @@ export default function Timer() {
       <ThemedText style={styles.workInProgressText} type="title">
         TIMER
       </ThemedText>
-    </SafeAreaProvider>
+    </SafeAreaView>
   );
 }
