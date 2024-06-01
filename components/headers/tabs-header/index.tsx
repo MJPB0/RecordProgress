@@ -3,7 +3,7 @@ import { router } from "expo-router";
 import { Styles, stylesheet } from "./stylesheet";
 import { useStyles } from "../../../hooks/useStyles";
 import { View } from "react-native";
-import PopupMenu from "../../shared/PopupMenu";
+import PopupMenu from "../../shared/popup-menu/PopupMenu";
 import Burger from "../../icons/Burger";
 import Avatar from "../../icons/Avatar";
 import Switch from "../../icons/Switch";
@@ -37,7 +37,23 @@ export default function TabsHeader({
       />
 
       <View style={styles.avatarIconContainer}>
-        <Avatar size="lg" isPressable onPress={onLogout} />
+        <PopupMenu
+          options={[
+            {
+              text: "Profile",
+              onPress: () => console.log("Profile pressed"),
+            },
+            {
+              text: "Preferences",
+              onPress: () => console.log("Preferences pressed"),
+            },
+            {
+              text: "Logout",
+              onPress: onLogout,
+            },
+          ]}
+          menuTrigger={<Avatar size="lg" />}
+        />
 
         {isDashboard && (
           <Switch

@@ -19,6 +19,7 @@ export interface Theme {
     };
     buttonPopup: {
       background: string;
+      separator: string;
       text: string;
       highlight: string;
     };

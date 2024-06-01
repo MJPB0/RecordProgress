@@ -9,7 +9,8 @@ export const darkTheme: Theme = {
       highlight: "#A04B49",
     },
     buttonPopup: {
-      background: "#252A34",
+      background: "#FFFFFF",
+      separator: "#252A34",
       text: "#000000",
       highlight: "#A04B4980",
     },
