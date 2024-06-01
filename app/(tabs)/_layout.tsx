@@ -1,11 +1,11 @@
 import { Tabs, router } from "expo-router";
 import React, { useEffect, useState } from "react";
-import ThemedImage from "../../components/shared/ThemedImage";
 import TabsHeader from "../../components/headers/tabs-header";
 import { useStyles } from "../../hooks/useStyles";
 import { Styles, stylesheet } from "./styles/layout.styles";
-
-const imagesFolderRoute = "../../assets/images";
+import Statistics from "../../components/icons/Statistics";
+import Home from "../../components/icons/Home";
+import Timer from "../../components/icons/Timer";
 
 export default function TabLayout() {
   const { theme, styles } = useStyles<Styles>(stylesheet);
@@ -35,36 +35,21 @@ export default function TabLayout() {
         name="statistics"
         listeners={{ tabPress: () => setIsDashboard(false) }}
         options={{
-          tabBarIcon: () => (
-            <ThemedImage
-              size="md"
-              source={require(`${imagesFolderRoute}/stats.png`)}
-            />
-          ),
+          tabBarIcon: () => <Statistics size="md" />,
         }}
       />
       <Tabs.Screen
         name="dashboard"
         listeners={{ tabPress: () => setIsDashboard(true) }}
         options={{
-          tabBarIcon: () => (
-            <ThemedImage
-              size="md"
-              source={require(`${imagesFolderRoute}/home.png`)}
-            />
-          ),
+          tabBarIcon: () => <Home size="md" />,
         }}
       />
       <Tabs.Screen
         name="timer"
         listeners={{ tabPress: () => setIsDashboard(false) }}
         options={{
-          tabBarIcon: () => (
-            <ThemedImage
-              size="md"
-              source={require(`${imagesFolderRoute}/timer.png`)}
-            />
-          ),
+          tabBarIcon: () => <Timer size="md" />,
         }}
       />
     </Tabs>

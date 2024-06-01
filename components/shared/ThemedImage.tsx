@@ -1,12 +1,8 @@
 import { Image, ImageProps } from "expo-image";
 import { Theme } from "../../styles/theme.types";
 import { useStyles } from "../../hooks/useStyles";
-import {
-  Pressable,
-  PressableProps,
-  SafeAreaView,
-  ViewProps,
-} from "react-native";
+import { PressableProps, SafeAreaView, ViewProps } from "react-native";
+import { PressableOpacity } from "react-native-pressable-opacity";
 
 export type ThemedImageProps = ImageProps & {
   size?: keyof Theme["sizes"];
@@ -38,9 +34,13 @@ export default function ThemedImage({
 
   if (isPressable) {
     themedImage = (
-      <Pressable onPress={onPress} {...pressableProps}>
+      <PressableOpacity
+        onPress={onPress}
+        activeOpacity={0.5}
+        {...pressableProps}
+      >
         {themedImage}
-      </Pressable>
+      </PressableOpacity>
     );
   }
 

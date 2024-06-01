@@ -74,7 +74,15 @@ export default function PopupMenu({ menuTrigger, options }: PopupMenuProps) {
 
   return (
     <Menu>
-      <MenuTrigger>{menuTrigger}</MenuTrigger>
+      <MenuTrigger
+        customStyles={{
+          triggerTouchable: {
+            activeOpacity: 0.5,
+          },
+        }}
+      >
+        {menuTrigger}
+      </MenuTrigger>
       <MenuOptions
         optionsContainerStyle={{
           marginTop: theme.sizes.lg + theme.margins.md,

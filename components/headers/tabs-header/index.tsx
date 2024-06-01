@@ -1,18 +1,18 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import ThemedImage from "../../shared/ThemedImage";
 import { router } from "expo-router";
 import { Styles, stylesheet } from "./stylesheet";
 import { useStyles } from "../../../hooks/useStyles";
 import { View } from "react-native";
 import PopupMenu from "../../shared/PopupMenu";
+import Burger from "../../icons/Burger";
+import Avatar from "../../icons/Avatar";
+import Switch from "../../icons/Switch";
 
 interface TabsHeaderProps {
   isDashboard: boolean;
   view: "day" | "month";
   setView: (view: "day" | "month") => void;
 }
-
-const imagesFolderRoute = "../../../assets/images";
 
 export default function TabsHeader({
   isDashboard,
@@ -33,35 +33,21 @@ export default function TabsHeader({
           text: "Settings",
           onPress: () => console.log("Settings pressed"),
         }}
-        menuTrigger={
-          <ThemedImage
-            size="lg"
-            source={require(`${imagesFolderRoute}/burger.png`)}
-          />
-        }
+        menuTrigger={<Burger size="lg" />}
       />
 
       <View style={styles.avatarIconContainer}>
-        <ThemedImage
-          size="lg"
-          isPressable
-          onPress={onLogout}
-          source={require(`${imagesFolderRoute}/avatar.png`)}
-        />
+        <Avatar size="lg" isPressable onPress={onLogout} />
 
         {isDashboard && (
-          <ThemedImage
+          <Switch
             size="lg"
             isPressable
             onPress={handleViewChange}
             pressableProps={{
               style: styles.switch,
             }}
-            source={
-              view === "day"
-                ? require(`${imagesFolderRoute}/switch.png`)
-                : require(`${imagesFolderRoute}/switch-reverse.png`)
-            }
+            state={view === "day" ? "default" : "clicked"}
           />
         )}
       </View>
