@@ -10,10 +10,10 @@ export default function Arrow({ direction, style, ...props }: ArrowProps) {
       style={[
         style,
         {
-          resizeMode: "contain",
           transform: [{ rotateY: direction === "left" ? "180deg" : "0deg" }],
         },
       ]}
+      contentFit="contain"
       source={require(`../../assets/images/arrow-right.png`)}
       {...props}
     />
