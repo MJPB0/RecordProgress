@@ -29,7 +29,7 @@ export const stylesheet = (theme: Theme) =>
       gap: theme.margins.sm,
     },
 
-    optionTouchable: { borderRadius: 8 },
+    optionTouchable: { borderRadius: 8, paddingHorizontal: theme.paddings.sm },
     topOptionTouchable: {
       borderBottomLeftRadius: 0,
       borderBottomRightRadius: 0,
@@ -61,7 +61,6 @@ export const stylesheet = (theme: Theme) =>
       //?   2 is just an offset to make the text align with the icon
       lineHeight: theme.font.sizes.lg + 2,
       fontWeight: theme.font.weight.semiBold,
-      marginHorizontal: theme.margins.md,
       textAlignVertical: "center",
     },
 
