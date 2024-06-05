@@ -17,10 +17,13 @@ export interface Theme {
       iconBackground: string;
       highlight: string;
     };
-    buttonPopup: {
+    button: {
       background: string;
       separator: string;
-      text: string;
+      text: {
+        default: string;
+        highlight: string;
+      };
       highlight: string;
     };
     day: {
@@ -31,7 +34,7 @@ export interface Theme {
       };
     };
     text: {
-      bright: string;
+      light: string;
       dark: string;
     };
   };

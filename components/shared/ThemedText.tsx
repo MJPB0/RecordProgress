@@ -19,7 +19,7 @@ export default function ThemedText({
     fontWeight: theme.font.weight.regular,
     fontFamily: theme.font.family,
     color:
-      variant === "bright" ? theme.colors.text.bright : theme.colors.text.dark,
+      variant === "bright" ? theme.colors.text.light : theme.colors.text.dark,
   };
 
   switch (type) {

@@ -8,10 +8,13 @@ export const lightTheme: Theme = {
       iconBackground: "#F5F5F5",
       highlight: "#A04B49",
     },
-    buttonPopup: {
+    button: {
       background: "#FFFFFF",
       separator: "#252A34",
-      text: "#000000",
+      text: {
+        default: "#000000",
+        highlight: "#FFFFFF",
+      },
       highlight: "#A04B4980",
     },
     day: {
@@ -22,7 +25,7 @@ export const lightTheme: Theme = {
       },
     },
     text: {
-      bright: "#ffffff",
+      light: "#ffffff",
       dark: "#000000",
     },
   },

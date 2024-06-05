@@ -1,8 +1,8 @@
 import { router } from "expo-router";
-import { Button } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useStyles } from "../../hooks/useStyles";
 import { Styles, stylesheet } from "./styles/login.styles";
+import ThemedButton from "../../components/shared/ThemedButton";
 
 export default function Login() {
   const { styles } = useStyles<Styles>(stylesheet);
@@ -13,7 +13,7 @@ export default function Login() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Button title="LOGIN" onPress={handleLoginClick} />
+      <ThemedButton title="LOGIN" onPress={handleLoginClick} />
     </SafeAreaView>
   );
 }

@@ -1,9 +1,9 @@
-import { Button } from "react-native";
 import { router, useRootNavigationState } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ThemedText from "../components/shared/ThemedText";
 import { Styles, stylesheet } from "./stylesheet";
 import { useStyles } from "../hooks/useStyles";
+import ThemedButton from "../components/shared/ThemedButton";
 
 export default function Landing() {
   const { styles } = useStyles<Styles>(stylesheet);
@@ -19,7 +19,7 @@ export default function Landing() {
   return (
     <SafeAreaView style={styles.container}>
       <ThemedText type="title">ROOT</ThemedText>
-      <Button title="CONTINUE" onPress={handleContinueClicked} />
+      <ThemedButton title="CONTINUE" onPress={handleContinueClicked} />
     </SafeAreaView>
   );
 }

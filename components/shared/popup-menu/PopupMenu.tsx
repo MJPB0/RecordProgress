@@ -98,7 +98,7 @@ export default function PopupMenu({ menuTrigger, options }: PopupMenuProps) {
               customStyles={{
                 optionTouchable: {
                   activeOpacity: 1,
-                  underlayColor: theme.colors.buttonPopup.highlight,
+                  underlayColor: theme.colors.button.highlight,
                   style: [
                     styles.optionTouchable,
                     index === 0 &&
