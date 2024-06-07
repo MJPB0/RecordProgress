@@ -46,6 +46,7 @@ export const darkTheme: Theme = {
     },
   },
   sizes: {
+    xxs: 10,
     xs: 16,
     sm: 24,
     md: 36,

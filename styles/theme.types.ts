@@ -55,6 +55,7 @@ export interface Theme {
     };
   };
   sizes: {
+    xxs: number;
     xs: number;
     sm: number;
     md: number;
