@@ -11,7 +11,7 @@ export const stylesheet = (theme: Theme) =>
   StyleSheet.create<Styles>({
     container: {
       flex: 1,
-      justifyContent: "center",
+      flexDirection: "column",
       alignItems: "center",
       paddingHorizontal: theme.paddings.lg,
       backgroundColor: theme.colors.background,

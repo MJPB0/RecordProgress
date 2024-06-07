@@ -1,10 +1,16 @@
 import ThemedImage, { ThemedImageProps } from "../shared/ThemedImage";
 
 interface ArrowProps extends ThemedImageProps {
+  variant: "default" | "alternative";
   direction: "left" | "right";
 }
 
-export default function Arrow({ direction, style, ...props }: ArrowProps) {
+export default function Arrow({
+  direction,
+  variant = "default",
+  style,
+  ...props
+}: ArrowProps) {
   return (
     <ThemedImage
       style={[
@@ -14,7 +20,11 @@ export default function Arrow({ direction, style, ...props }: ArrowProps) {
         },
       ]}
       contentFit="contain"
-      source={require(`../../assets/images/arrow-right.png`)}
+      source={
+        variant === "default"
+          ? require(`../../assets/images/arrow.png`)
+          : require(`../../assets/images/arrow-2.png`)
+      }
       {...props}
     />
   );
