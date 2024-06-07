@@ -4,6 +4,7 @@ import { Style } from "../../../../styles/style";
 import { TextStyle } from "react-native";
 
 export interface Styles extends Style {
+  weekdayRow: TextStyle;
   weekday: TextStyle;
 }
 
@@ -11,11 +12,10 @@ export const stylesheet = (theme: Theme) =>
   StyleSheet.create<Styles>({
     weekdayRow: {
       flexDirection: "row",
-      flex: 1,
     },
     weekday: {
       color: theme.colors.text.light,
-      fontSize: theme.font.sizes.lg,
+      fontSize: theme.font.sizes.xl,
       textAlign: "center",
       flex: 1,
     },
