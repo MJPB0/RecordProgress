@@ -40,6 +40,7 @@ export default function PopupMenu({ menuTrigger, options }: PopupMenuProps) {
 
     const optionText = (
       <Text
+        key={`popup-menu-text-${text}`}
         style={[
           {
             textAlign: isDirectedRight ? "left" : "right",
@@ -56,7 +57,12 @@ export default function PopupMenu({ menuTrigger, options }: PopupMenuProps) {
       icon !== undefined ? (
         icon
       ) : (
-        <Arrow direction={direction} size="sm" style={iconStyle} />
+        <Arrow
+          key={`popup-menu-image-${text}`}
+          direction={direction}
+          size="sm"
+          style={iconStyle}
+        />
       );
 
     return isDirectedRight ? (
