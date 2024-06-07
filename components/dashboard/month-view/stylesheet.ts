@@ -13,7 +13,7 @@ export const stylesheet = (theme: Theme) =>
       flex: 1,
       justifyContent: "center",
       alignItems: "center",
-      padding: theme.paddings.xl,
+      paddingHorizontal: theme.paddings.lg,
       backgroundColor: theme.colors.background,
     },
   }).styles;
