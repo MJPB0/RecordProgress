@@ -3,6 +3,7 @@ import { useStyles } from "../../../../hooks/useStyles";
 import { Styles, stylesheet } from "./stylesheet";
 import Arrow from "../../../icons/Arrow";
 import CalendarModal from "../../../shared/calendar/CalendarModal";
+import { changeMonth, getMonthFromDate } from "../../../../utils/date.utils";
 
 interface MonthViewHeaderProps {
   selectedDate: Date;
@@ -16,16 +17,7 @@ export default function MonthViewHeader({
   const { styles } = useStyles<Styles>(stylesheet);
 
   const displayDate = () =>
-    `${selectedDate.toLocaleString("default", {
-      month: "long",
-    })} ${selectedDate.getFullYear()}`;
-
-  const changeMonth = ({ isFuture }: { isFuture: boolean }) =>
-    setSelectedDate(
-      new Date(
-        selectedDate.setMonth(selectedDate.getMonth() + (isFuture ? 1 : -1))
-      )
-    );
+    `${getMonthFromDate(selectedDate)} ${selectedDate.getFullYear()}`;
 
   return (
     <View style={styles.container}>
@@ -34,7 +26,9 @@ export default function MonthViewHeader({
         variant="alternative"
         size="xl"
         isPressable
-        onPress={() => changeMonth({ isFuture: false })}
+        onPress={() =>
+          setSelectedDate(changeMonth({ selectedDate, shouldIncrement: false }))
+        }
       />
       <View style={styles.dateContainer}>
         <Text style={styles.dateText}>{displayDate()}</Text>
@@ -49,7 +43,7 @@ export default function MonthViewHeader({
         variant="alternative"
         size="xl"
         isPressable
-        onPress={() => changeMonth({ isFuture: true })}
+        onPress={() => setSelectedDate(changeMonth({ selectedDate }))}
       />
     </View>
   );
