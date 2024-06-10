@@ -2,31 +2,19 @@ import { Theme } from "./theme.types";
 
 export const lightTheme: Theme = {
   colors: {
-    background: "#252A34",
-    tabBar: {
-      background: "#252A34",
-      iconBackground: "#F5F5F5",
-      highlight: "#A04B49",
+    background: {
+      primary: "#252A34",
+      secondary: "#FFFFFF",
+      accent: "#F5F5F5",
     },
-    button: {
-      background: "#FFFFFF",
-      separator: "#252A34",
-      text: {
-        default: "#000000",
-        highlight: "#FFFFFF",
-      },
-      highlight: "#A04B4980",
-    },
-    day: {
-      text: "#ffffff",
-      note: {
-        background: "#F5F5F5",
-        text: "#000000",
-      },
+    highlight: {
+      primary: "#A04B49",
+      secondary: "#A04B4980",
     },
     text: {
-      light: "#ffffff",
-      dark: "#000000",
+      primary: "#000000",
+      secondary: "#FFFFFF",
+      accent: "#1F1F1F",
     },
   },
   font: {
@@ -38,7 +26,12 @@ export const lightTheme: Theme = {
       xxl: 36,
       xxxl: 64,
     },
-    family: "Harmattan",
+    family: {
+      primary: "Harmattan",
+      primarySemiBold: "HarmattanSemiBold",
+      primaryBold: "HarmattanBold",
+      secondary: "Lexend",
+    },
     weight: {
       regular: "400",
       semiBold: "600",

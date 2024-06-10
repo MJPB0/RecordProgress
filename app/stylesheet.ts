@@ -14,6 +14,6 @@ export const stylesheet = (theme: Theme) =>
       justifyContent: "center",
       alignItems: "center",
       padding: theme.paddings.xl,
-      backgroundColor: theme.colors.background,
+      backgroundColor: theme.colors.background.primary,
     },
   }).styles;

@@ -17,9 +17,11 @@ export default function ThemedText({
   const props = {
     fontSize: theme.font.sizes.md,
     fontWeight: theme.font.weight.regular,
-    fontFamily: theme.font.family,
+    fontFamily: theme.font.family.primary,
     color:
-      variant === "bright" ? theme.colors.text.light : theme.colors.text.dark,
+      variant === "bright"
+        ? theme.colors.text.secondary
+        : theme.colors.text.primary,
   };
 
   switch (type) {

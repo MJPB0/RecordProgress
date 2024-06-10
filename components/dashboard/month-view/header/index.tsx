@@ -2,7 +2,7 @@ import { Text, View } from "react-native";
 import { useStyles } from "../../../../hooks/useStyles";
 import { Styles, stylesheet } from "./stylesheet";
 import Arrow from "../../../icons/Arrow";
-import Calendar from "../../../icons/Calendar";
+import CalendarModal from "../../../shared/calendar/CalendarModal";
 
 interface MonthViewHeaderProps {
   selectedDate: Date;
@@ -38,7 +38,11 @@ export default function MonthViewHeader({
       />
       <View style={styles.dateContainer}>
         <Text style={styles.dateText}>{displayDate()}</Text>
-        <Calendar size="md" />
+        <CalendarModal
+          variant="short"
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+        />
       </View>
       <Arrow
         direction="right"

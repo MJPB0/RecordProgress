@@ -14,7 +14,7 @@ export const stylesheet = (theme: Theme) =>
       flexDirection: "row",
     },
     weekday: {
-      color: theme.colors.text.light,
+      color: theme.colors.text.secondary,
       fontSize: theme.font.sizes.xl,
       textAlign: "center",
       flex: 1,

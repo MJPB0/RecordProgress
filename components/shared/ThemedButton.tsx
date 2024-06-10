@@ -1,17 +1,19 @@
 import { useStyles } from "../../hooks/useStyles";
-import { Pressable, Text, ViewProps } from "react-native";
+import { Pressable, Text, TextStyle, ViewProps } from "react-native";
 import { Theme } from "../../styles/theme.types";
 import { useState } from "react";
 
 export type ThemedButtonProps = ViewProps & {
   title: string;
   titleSize?: keyof Theme["font"]["sizes"];
+  titleStyle?: TextStyle;
   onPress?: () => void;
 };
 
 export default function ThemedButton({
   title,
   titleSize = "md",
+  titleStyle,
   style,
   onPress,
 }: ThemedButtonProps) {
@@ -26,8 +28,8 @@ export default function ThemedButton({
       style={[
         {
           backgroundColor: !isActive
-            ? theme.colors.button.background
-            : theme.colors.button.highlight,
+            ? theme.colors.background.accent
+            : theme.colors.highlight.primary,
           flexDirection: "row",
           justifyContent: "space-between",
           padding: theme.paddings.md,
@@ -39,14 +41,17 @@ export default function ThemedButton({
       ]}
     >
       <Text
-        style={{
-          color: !isActive
-            ? theme.colors.button.text.default
-            : theme.colors.button.text.highlight,
-          fontWeight: theme.font.weight.regular,
-          fontFamily: theme.font.family,
-          fontSize: theme.font.sizes[titleSize],
-        }}
+        style={[
+          {
+            color: !isActive
+              ? theme.colors.text.primary
+              : theme.colors.text.secondary,
+            fontWeight: theme.font.weight.regular,
+            fontFamily: theme.font.family.primary,
+            fontSize: theme.font.sizes[titleSize],
+          },
+          titleStyle,
+        ]}
       >
         {title}
       </Text>

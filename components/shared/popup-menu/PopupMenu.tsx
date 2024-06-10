@@ -20,8 +20,8 @@ interface MenuOptionProps {
 }
 
 interface PopupMenuProps {
-  options: MenuOptionProps | MenuOptionProps[];
   menuTrigger: React.ReactNode;
+  options: MenuOptionProps | MenuOptionProps[];
 }
 
 export default function PopupMenu({ menuTrigger, options }: PopupMenuProps) {
@@ -104,7 +104,7 @@ export default function PopupMenu({ menuTrigger, options }: PopupMenuProps) {
               customStyles={{
                 optionTouchable: {
                   activeOpacity: 1,
-                  underlayColor: theme.colors.button.highlight,
+                  underlayColor: theme.colors.highlight.secondary,
                   style: [
                     styles.optionTouchable,
                     index === 0 &&

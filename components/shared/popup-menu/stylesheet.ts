@@ -19,9 +19,11 @@ export interface Styles extends Style {
 export const stylesheet = (theme: Theme) =>
   StyleSheet.create<Styles>({
     menuOptionsContainer: {
-      backgroundColor: theme.colors.button.background,
+      backgroundColor: theme.colors.background.accent,
       marginTop: theme.sizes.lg + theme.margins.md,
       borderRadius: 8,
+      borderWidth: 2,
+      borderColor: theme.colors.background.primary,
       width: "auto",
     },
     menuOptionsWrapper: {
@@ -66,6 +68,6 @@ export const stylesheet = (theme: Theme) =>
 
     separator: {
       borderWidth: 2,
-      borderColor: theme.colors.button.separator,
+      borderColor: theme.colors.background.primary,
     },
   }).styles;

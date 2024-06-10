@@ -1,8 +1,8 @@
 import ThemedImage, { ThemedImageProps } from "../shared/ThemedImage";
 
 interface ArrowProps extends ThemedImageProps {
-  variant: "default" | "alternative";
   direction: "left" | "right";
+  variant?: "default" | "alternative";
 }
 
 export default function Arrow({

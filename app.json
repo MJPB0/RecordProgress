@@ -32,6 +32,15 @@
         {
           "faceIDPermission": "Allow $(PRODUCT_NAME) to access your Face ID biometric data."
         }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Lexend.ttf",
+            "./assets/fonts/Harmattan-Regular.ttf"
+          ]
+        }
       ]
     ],
     "owner": "mjpb",

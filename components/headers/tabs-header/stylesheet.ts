@@ -16,7 +16,7 @@ export const stylesheet = (theme: Theme) =>
       flexDirection: "row",
       justifyContent: "space-between",
       paddingHorizontal: theme.paddings.xl,
-      backgroundColor: theme.colors.background,
+      backgroundColor: theme.colors.background.primary,
     },
 
     avatarIconContainer: {

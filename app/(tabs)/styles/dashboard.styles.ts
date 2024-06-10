@@ -13,6 +13,6 @@ export const stylesheet = (theme: Theme) =>
       flex: 1,
       justifyContent: "center",
       alignItems: "center",
-      backgroundColor: theme.colors.background,
+      backgroundColor: theme.colors.background.primary,
     },
   }).styles;

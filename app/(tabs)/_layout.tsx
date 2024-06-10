@@ -27,8 +27,8 @@ export default function TabLayout() {
         tabBarStyle: styles.tabBar,
         tabBarItemStyle: styles.tabBarItem,
         tabBarShowLabel: false,
-        tabBarActiveBackgroundColor: theme.colors.tabBar.highlight,
-        tabBarInactiveBackgroundColor: theme.colors.tabBar.iconBackground,
+        tabBarActiveBackgroundColor: theme.colors.highlight.primary,
+        tabBarInactiveBackgroundColor: theme.colors.background.secondary,
       }}
     >
       <Tabs.Screen

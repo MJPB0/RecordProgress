@@ -11,31 +11,19 @@ export type FontWeight =
 
 export interface Theme {
   colors: {
-    background: string;
-    tabBar: {
-      background: string;
-      iconBackground: string;
-      highlight: string;
+    background: {
+      primary: string;
+      secondary: string;
+      accent: string;
     };
-    button: {
-      background: string;
-      separator: string;
-      text: {
-        default: string;
-        highlight: string;
-      };
-      highlight: string;
-    };
-    day: {
-      text: string;
-      note: {
-        background: string;
-        text: string;
-      };
+    highlight: {
+      primary: string;
+      secondary: string;
     };
     text: {
-      light: string;
-      dark: string;
+      primary: string;
+      secondary: string;
+      accent: string;
     };
   };
   font: {
@@ -47,7 +35,12 @@ export interface Theme {
       xxl: number;
       xxxl: number;
     };
-    family: string;
+    family: {
+      primary: string;
+      primarySemiBold: string;
+      primaryBold: string;
+      secondary: string;
+    };
     weight: {
       regular: FontWeight;
       semiBold: FontWeight;

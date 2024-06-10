@@ -24,7 +24,7 @@ export const stylesheet = (theme: Theme) =>
     },
     dateText: {
       fontSize: theme.font.sizes.xl,
-      color: theme.colors.text.light,
+      color: theme.colors.text.secondary,
       marginRight: theme.margins.md,
     },
   }).styles;
