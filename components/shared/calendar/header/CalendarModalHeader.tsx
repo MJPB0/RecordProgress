@@ -4,22 +4,22 @@ import { stylesheet } from "./stylesheet";
 import { PressableOpacity } from "react-native-pressable-opacity";
 import Arrow from "../../../icons/Arrow";
 import ThemedButton from "../../ThemedButton";
-import { changeMonth, getMonthFromDate } from "../../../../utils/date.utils";
-import { useState } from "react";
+import { DateTime } from "luxon";
+import { getMonthName } from "../../../../utils/date.utils";
 
 interface CalendarModalHeaderProps {
-  selectedDate: Date;
-  setSelectedDate: (newDate: Date) => void;
+  date: DateTime;
+  setDate: (newDate: DateTime) => void;
 }
 
 export default function CalendarModalHeader({
-  selectedDate,
+  date,
+  setDate,
 }: CalendarModalHeaderProps) {
   const { styles } = useStyles(stylesheet);
-  const [date, setDate] = useState<Date>(selectedDate);
 
   const handleArrowPress = (shouldIncrement: boolean) =>
-    setDate(changeMonth({ selectedDate: date, shouldIncrement }));
+    setDate(date.plus({ months: shouldIncrement ? 1 : -1 }));
 
   // TODO dropdowns for month and year
   return (
@@ -33,13 +33,13 @@ export default function CalendarModalHeader({
       </PressableOpacity>
       <View style={styles.dropdownContainer}>
         <ThemedButton
-          title={getMonthFromDate(date)}
+          title={getMonthName(date.month)}
           titleSize="lg"
           style={styles.dateDropdown}
           titleStyle={styles.dateDropdownText}
         />
         <ThemedButton
-          title={date.getFullYear().toString()}
+          title={date.year.toString()}
           titleSize="lg"
           style={styles.dateDropdown}
           titleStyle={styles.dateDropdownText}

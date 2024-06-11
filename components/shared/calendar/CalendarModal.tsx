@@ -6,21 +6,52 @@ import { useState } from "react";
 import CalendarModalDay from "./day/CalendarModalDay";
 import CalendarModalHeader from "./header/CalendarModalHeader";
 import CalendarModalWeekdayRow from "./weekdayRow/CalendarModalHeader";
+import { DateTime, Interval } from "luxon";
+import { equalTo, rangeOfDays } from "../../../utils/date.utils";
 
 interface CalendarModalProps {
-  selectedDate: Date;
-  setSelectedDate: (date: Date) => void;
+  selectedDate: DateTime;
+  setSelectedDate: (date: DateTime) => void;
   variant?: "default" | "short";
 }
+
+const generateDays = (date: DateTime) => {
+  const startOfMonth = date.startOf("month");
+  const endOfMonth = date.endOf("month");
+
+  //? PREVIOUS MONTH
+  const daysInPreviousMonth = [...Array(startOfMonth.weekday - 1)].map((_, i) =>
+    startOfMonth.minus({ days: startOfMonth.weekday - i - 1 })
+  );
+
+  //? CURRENT MONTH
+  const interval = Interval.fromDateTimes(startOfMonth, endOfMonth);
+  const range = rangeOfDays(interval);
+
+  //? NEXT MONTH
+  const daysInNextMonth = [...Array(7 - endOfMonth.weekday)].map((_, i) =>
+    endOfMonth.plus({ days: i + 1 })
+  );
+
+  const generatedDays = [...daysInPreviousMonth, ...range, ...daysInNextMonth];
+
+  //? SPLIT INTO WEEKS
+  const weeks = [];
+  for (let i = 0; i < generatedDays.length; i += 7) {
+    weeks.push(generatedDays.slice(i, i + 7));
+  }
+
+  return weeks;
+};
 
 export default function CalendarModal({
   selectedDate,
   setSelectedDate,
   variant = "default",
 }: CalendarModalProps) {
-  const { styles, theme } = useStyles(stylesheet);
+  const { styles } = useStyles(stylesheet);
   const [modalVisible, setModalVisible] = useState(false);
-  const [date, setDate] = useState<Date>(selectedDate);
+  const [date, setDate] = useState(selectedDate);
 
   return (
     <View>
@@ -38,42 +69,32 @@ export default function CalendarModal({
         >
           <Pressable style={styles.modalContainerPressable}>
             <View style={styles.modalContainer}>
-              <CalendarModalHeader
-                selectedDate={date}
-                setSelectedDate={setDate}
-              />
+              <CalendarModalHeader date={date} setDate={setDate} />
 
-              <CalendarModalWeekdayRow />
-
-              <View
-                style={{
-                  flexDirection: "column",
-                  marginTop: theme.margins.md,
-                  gap: theme.margins.sm,
-                }}
-              >
-                {Array.from({ length: 5 }, (_, i) => (
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      gap: theme.margins.sm,
-                    }}
-                  >
-                    {Array.from({ length: 7 }, (_, j) => (
-                      <CalendarModalDay
-                        day={(i * 7 + j).toString()}
-                        variant={
-                          i * 7 + j < 4 || i * 7 + j > 31
-                            ? "disabled"
-                            : i * 7 + j !== 9
-                            ? "inactive"
-                            : "active"
-                        }
-                      />
+              {variant === "default" && (
+                <>
+                  <CalendarModalWeekdayRow />
+                  <View style={styles.generatedMonth}>
+                    {generateDays(date).map((week) => (
+                      <View style={styles.generatedWeek}>
+                        {week.map((day) => (
+                          <CalendarModalDay
+                            date={day}
+                            setDate={setSelectedDate}
+                            variant={
+                              day.month !== date.month
+                                ? "disabled"
+                                : equalTo(day, selectedDate)
+                                ? "active"
+                                : "inactive"
+                            }
+                          />
+                        ))}
+                      </View>
                     ))}
                   </View>
-                ))}
-              </View>
+                </>
+              )}
             </View>
           </Pressable>
         </Pressable>

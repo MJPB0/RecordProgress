@@ -7,13 +7,14 @@ export interface Styles extends Style {
   backgroundPressable: ViewStyle;
   modalContainerPressable: ViewStyle;
   modalContainer: ViewStyle;
+  generatedMonth: ViewStyle;
+  generatedWeek: ViewStyle;
 }
 
 export const stylesheet = (theme: Theme) =>
   StyleSheet.create<Styles>({
     backgroundPressable: {
       flex: 1,
-      justifyContent: "center",
       alignItems: "center",
 
       position: "absolute",
@@ -22,12 +23,24 @@ export const stylesheet = (theme: Theme) =>
       backgroundColor: "rgba(0,0,0,0.5)",
     },
     modalContainerPressable: {
+      top: "32%",
       width: "85%",
+      borderWidth: 2,
+      borderColor: theme.colors.background.primary,
+      borderRadius: theme.sizes.sm,
+      backgroundColor: theme.colors.background.accent,
     },
     modalContainer: {
-      backgroundColor: theme.colors.background.accent,
-      borderRadius: theme.sizes.sm,
       padding: theme.paddings.md,
       flexDirection: "column",
+    },
+    generatedMonth: {
+      flexDirection: "column",
+      marginTop: theme.margins.md,
+      gap: theme.margins.sm,
+    },
+    generatedWeek: {
+      flexDirection: "row",
+      gap: theme.margins.sm,
     },
   }).styles;

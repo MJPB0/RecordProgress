@@ -1,15 +1,18 @@
-import { View } from "react-native";
 import { useStyles } from "../../../../hooks/useStyles";
 import { stylesheet } from "./stylesheet";
 import ThemedText from "../../ThemedText";
+import { PressableOpacity } from "react-native-pressable-opacity";
+import { DateTime } from "luxon";
 
 interface CalendarModalDayProps {
-  day: string;
+  date: DateTime;
+  setDate: (newDate: DateTime) => void;
   variant?: "active" | "inactive" | "disabled";
 }
 
 export default function CalendarModalDay({
-  day,
+  date,
+  setDate,
   variant = "inactive",
 }: CalendarModalDayProps) {
   const { styles } = useStyles(stylesheet);
@@ -27,8 +30,13 @@ export default function CalendarModalDay({
   };
 
   return (
-    <View style={variantContainerStyleMap[variant]}>
-      <ThemedText style={variantTextStyleMap[variant]}>{day}</ThemedText>
-    </View>
+    <PressableOpacity
+      style={variantContainerStyleMap[variant]}
+      onPress={() => setDate(date)}
+      disabled={variant === "disabled"}
+      disabledOpacity={1}
+    >
+      <ThemedText style={variantTextStyleMap[variant]}>{date.day}</ThemedText>
+    </PressableOpacity>
   );
 }

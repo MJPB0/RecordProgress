@@ -3,11 +3,12 @@ import { useStyles } from "../../../../hooks/useStyles";
 import { Styles, stylesheet } from "./stylesheet";
 import Arrow from "../../../icons/Arrow";
 import CalendarModal from "../../../shared/calendar/CalendarModal";
-import { changeMonth, getMonthFromDate } from "../../../../utils/date.utils";
+import { DateTime } from "luxon";
+import { getMonthName } from "../../../../utils/date.utils";
 
 interface MonthViewHeaderProps {
-  selectedDate: Date;
-  setSelectedDate: (date: Date) => void;
+  selectedDate: DateTime;
+  setSelectedDate: (date: DateTime) => void;
 }
 
 export default function MonthViewHeader({
@@ -17,7 +18,7 @@ export default function MonthViewHeader({
   const { styles } = useStyles<Styles>(stylesheet);
 
   const displayDate = () =>
-    `${getMonthFromDate(selectedDate)} ${selectedDate.getFullYear()}`;
+    `${getMonthName(selectedDate.month)} ${selectedDate.year}`;
 
   return (
     <View style={styles.container}>
@@ -26,14 +27,12 @@ export default function MonthViewHeader({
         variant="alternative"
         size="xl"
         isPressable
-        onPress={() =>
-          setSelectedDate(changeMonth({ selectedDate, shouldIncrement: false }))
-        }
+        onPress={() => setSelectedDate(selectedDate.minus({ months: 1 }))}
       />
       <View style={styles.dateContainer}>
         <Text style={styles.dateText}>{displayDate()}</Text>
         <CalendarModal
-          variant="short"
+          // variant="short"
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
         />
@@ -43,7 +42,7 @@ export default function MonthViewHeader({
         variant="alternative"
         size="xl"
         isPressable
-        onPress={() => setSelectedDate(changeMonth({ selectedDate }))}
+        onPress={() => setSelectedDate(selectedDate.plus({ months: 1 }))}
       />
     </View>
   );

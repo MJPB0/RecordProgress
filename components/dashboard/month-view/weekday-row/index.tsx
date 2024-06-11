@@ -1,6 +1,6 @@
 import { useStyles } from "../../../../hooks/useStyles";
 import { Styles, stylesheet } from "./stylesheet";
-import { weekdays } from "../../../shared/constants/weekday";
+import { weekdays } from "../../../../utils/constants";
 import { Text, View } from "react-native";
 
 export default function WeekdayRow() {
