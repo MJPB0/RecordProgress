@@ -3,14 +3,14 @@ import { Styles, stylesheet } from "./stylesheet";
 import { weekdays } from "../../../../utils/constants";
 import { Text, View } from "react-native";
 
-export default function WeekdayRow() {
+export default function MonthViewWeekdays() {
   const { styles } = useStyles<Styles>(stylesheet);
 
   return (
     <View style={styles.weekdayRow}>
       {weekdays.map((weekday) => (
         <Text key={weekday} style={styles.weekday}>
-          {weekday}
+          {weekday.slice(0, 2)}
         </Text>
       ))}
     </View>

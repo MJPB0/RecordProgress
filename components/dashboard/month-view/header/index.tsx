@@ -1,10 +1,10 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { useStyles } from "../../../../hooks/useStyles";
 import { Styles, stylesheet } from "./stylesheet";
 import Arrow from "../../../icons/Arrow";
-import CalendarModal from "../../../shared/calendar/CalendarModal";
 import { DateTime } from "luxon";
 import { getMonthName } from "../../../../utils/date.utils";
+import ThemedButton from "../../../shared/ThemedButton";
 
 interface MonthViewHeaderProps {
   selectedDate: DateTime;
@@ -17,8 +17,8 @@ export default function MonthViewHeader({
 }: MonthViewHeaderProps) {
   const { styles } = useStyles<Styles>(stylesheet);
 
-  const displayDate = () =>
-    `${getMonthName(selectedDate.month)} ${selectedDate.year}`;
+  const changeMonth = (shouldIncrement: boolean) =>
+    setSelectedDate(selectedDate.plus({ months: shouldIncrement ? 1 : -1 }));
 
   return (
     <View style={styles.container}>
@@ -27,14 +27,20 @@ export default function MonthViewHeader({
         variant="alternative"
         size="xl"
         isPressable
-        onPress={() => setSelectedDate(selectedDate.minus({ months: 1 }))}
+        onPress={() => changeMonth(false)}
       />
-      <View style={styles.dateContainer}>
-        <Text style={styles.dateText}>{displayDate()}</Text>
-        <CalendarModal
-          // variant="short"
-          selectedDate={selectedDate}
-          setSelectedDate={setSelectedDate}
+      <View style={styles.dropdownContainer}>
+        <ThemedButton
+          title={getMonthName(selectedDate.month)}
+          titleSize="lg"
+          style={styles.dateDropdown}
+          titleStyle={styles.dateDropdownText}
+        />
+        <ThemedButton
+          title={selectedDate.year.toString()}
+          titleSize="lg"
+          style={styles.dateDropdown}
+          titleStyle={styles.dateDropdownText}
         />
       </View>
       <Arrow
@@ -42,7 +48,7 @@ export default function MonthViewHeader({
         variant="alternative"
         size="xl"
         isPressable
-        onPress={() => setSelectedDate(selectedDate.plus({ months: 1 }))}
+        onPress={() => changeMonth(true)}
       />
     </View>
   );

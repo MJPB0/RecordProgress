@@ -4,21 +4,21 @@ import { Style } from "../../../../styles/style";
 import { TextStyle } from "react-native";
 
 export interface Styles extends Style {
-  weekdayRow: TextStyle;
-  weekday: TextStyle;
+  generatedMonth: TextStyle;
+  generatedWeek: TextStyle;
 }
 
 export const stylesheet = (theme: Theme) =>
   StyleSheet.create<Styles>({
-    weekdayRow: {
-      flexDirection: "row",
+    generatedMonth: {
+      flexDirection: "column",
+      marginTop: theme.margins.md,
+      gap: theme.margins.md,
       width: "100%",
-      gap: theme.paddings.md,
     },
-    weekday: {
-      color: theme.colors.text.secondary,
-      fontSize: theme.font.sizes.xl,
-      textAlign: "center",
-      flex: 1,
+
+    generatedWeek: {
+      flexDirection: "row",
+      gap: theme.margins.md,
     },
   }).styles;

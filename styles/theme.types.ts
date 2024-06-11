@@ -25,6 +25,15 @@ export interface Theme {
       secondary: string;
       accent: string;
     };
+    day: {
+      monday: string;
+      tuesday: string;
+      wednesday: string;
+      thursday: string;
+      friday: string;
+      saturday: string;
+      sunday: string;
+    };
   };
   font: {
     sizes: {

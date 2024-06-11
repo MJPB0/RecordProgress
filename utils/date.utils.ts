@@ -46,3 +46,32 @@ export const rangeOfMonths = (interval: Interval) =>
   intervalFor(interval, "month");
 
 export const getMonthName = (month: number) => months[month - 1];
+
+export const generateCalendarMonth = (date: DateTime) => {
+  const startOfMonth = date.startOf("month");
+  const endOfMonth = date.endOf("month");
+
+  //? PREVIOUS MONTH
+  const daysInPreviousMonth = [...Array(startOfMonth.weekday - 1)].map((_, i) =>
+    startOfMonth.minus({ days: startOfMonth.weekday - i - 1 })
+  );
+
+  //? CURRENT MONTH
+  const interval = Interval.fromDateTimes(startOfMonth, endOfMonth);
+  const range = rangeOfDays(interval);
+
+  //? NEXT MONTH
+  const daysInNextMonth = [...Array(7 - endOfMonth.weekday)].map((_, i) =>
+    endOfMonth.plus({ days: i + 1 })
+  );
+
+  const generatedDays = [...daysInPreviousMonth, ...range, ...daysInNextMonth];
+
+  //? SPLIT INTO WEEKS
+  const weeks = [];
+  for (let i = 0; i < generatedDays.length; i += 7) {
+    weeks.push(generatedDays.slice(i, i + 7));
+  }
+
+  return weeks;
+};

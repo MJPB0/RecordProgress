@@ -10,10 +10,8 @@ export interface Styles extends Style {
 export const stylesheet = (theme: Theme) =>
   StyleSheet.create<Styles>({
     container: {
-      flex: 1,
-      flexDirection: "column",
-      alignItems: "center",
       paddingHorizontal: theme.paddings.lg,
-      backgroundColor: theme.colors.background,
+      width: "100%",
+      height: "100%",
     },
   }).styles;

@@ -5,8 +5,9 @@ import { TextStyle, ViewStyle } from "react-native";
 
 export interface Styles extends Style {
   container: ViewStyle;
-  dateContainer: ViewStyle;
-  dateText: TextStyle;
+  dropdownContainer: ViewStyle;
+  dateDropdown: ViewStyle;
+  dateDropdownText: TextStyle;
 }
 
 export const stylesheet = (theme: Theme) =>
@@ -15,16 +16,21 @@ export const stylesheet = (theme: Theme) =>
       alignItems: "center",
       flexDirection: "row",
       marginBottom: theme.margins.lg,
+      width: "100%",
     },
-    dateContainer: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
+
+    dropdownContainer: {
       flexDirection: "row",
+      justifyContent: "center",
+      gap: theme.margins.sm,
+      flex: 1,
     },
-    dateText: {
-      fontSize: theme.font.sizes.xl,
-      color: theme.colors.text.secondary,
-      marginRight: theme.margins.md,
+    dateDropdown: {
+      backgroundColor: theme.colors.background.secondary,
+    },
+    dateDropdownText: {
+      lineHeight: theme.sizes.sm,
+      fontFamily: theme.font.family.secondary,
+      fontWeight: theme.font.weight.bold,
     },
   }).styles;

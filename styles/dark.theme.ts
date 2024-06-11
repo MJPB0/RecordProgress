@@ -16,6 +16,15 @@ export const darkTheme: Theme = {
       secondary: "#FFFFFF",
       accent: "#1F1F1F",
     },
+    day: {
+      monday: "#DCC238",
+      tuesday: "#C0834B",
+      wednesday: "#59AB7F",
+      thursday: "#2ABBBB",
+      friday: "#5534B1",
+      saturday: "#0946E1",
+      sunday: "#A04B49",
+    },
   },
   font: {
     sizes: {
