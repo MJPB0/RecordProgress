@@ -14,7 +14,6 @@ export const stylesheet = (theme: Theme) =>
       backgroundColor: theme.colors.highlight.primary,
       borderRadius: theme.sizes.xxs,
       padding: theme.paddings.md,
-      flex: 1,
     },
     dayTextDefault: {
       fontSize: theme.font.sizes.lg,

@@ -1,4 +1,10 @@
-import { Text, TextStyle, TouchableHighlight, View } from "react-native";
+import {
+  Text,
+  TextStyle,
+  TouchableHighlight,
+  View,
+  ViewStyle,
+} from "react-native";
 import {
   Menu,
   MenuTrigger,
@@ -17,14 +23,22 @@ interface MenuOptionProps {
   direction?: "left" | "right";
   icon?: React.ReactNode;
   iconStyle?: ImageStyle;
+  underlayColor?: string;
 }
 
 interface PopupMenuProps {
   menuTrigger: React.ReactNode;
   options: MenuOptionProps | MenuOptionProps[];
+  style?: ViewStyle;
+  disabled?: boolean;
 }
 
-export default function PopupMenu({ menuTrigger, options }: PopupMenuProps) {
+export default function PopupMenu({
+  menuTrigger,
+  options,
+  style,
+  disabled = false,
+}: PopupMenuProps) {
   options = [options].flat();
 
   const { theme, styles } = useStyles(stylesheet);
@@ -79,13 +93,14 @@ export default function PopupMenu({ menuTrigger, options }: PopupMenuProps) {
   };
 
   return (
-    <Menu>
+    <Menu style={style}>
       <MenuTrigger
         customStyles={{
           triggerTouchable: {
-            activeOpacity: 0.5,
+            activeOpacity: disabled ? 1 : 0.5,
           },
         }}
+        disabled={disabled}
       >
         {menuTrigger}
       </MenuTrigger>
@@ -96,7 +111,7 @@ export default function PopupMenu({ menuTrigger, options }: PopupMenuProps) {
           OptionTouchableComponent: TouchableHighlight,
         }}
       >
-        {options.map(({ onPress, ...props }, index) => (
+        {options.map(({ onPress, underlayColor, ...props }, index) => (
           <>
             <MenuOption
               key={`popup-menu-option-${props.text}-${index}`}
@@ -104,7 +119,8 @@ export default function PopupMenu({ menuTrigger, options }: PopupMenuProps) {
               customStyles={{
                 optionTouchable: {
                   activeOpacity: 1,
-                  underlayColor: theme.colors.highlight.secondary,
+                  underlayColor:
+                    underlayColor ?? theme.colors.highlight.secondary,
                   style: [
                     styles.optionTouchable,
                     index === 0 &&

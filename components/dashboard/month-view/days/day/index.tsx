@@ -1,8 +1,10 @@
-import { PressableOpacity } from "react-native-pressable-opacity";
 import { DateTime } from "luxon";
 import ThemedText from "../../../../shared/ThemedText";
 import { useStyles } from "../../../../../hooks/useStyles";
 import { stylesheet } from "./stylesheet";
+import PopupMenu from "../../../../shared/popup-menu/PopupMenu";
+import { View } from "react-native";
+import { hex2rgba } from "../../../../../utils/color.utils";
 
 interface MonthViewDayProps {
   date: DateTime;
@@ -26,14 +28,28 @@ export default function MonthViewDay({
   ];
 
   return (
-    <PressableOpacity
-      style={[
-        styles.dayContainerDefault,
-        { backgroundColor: backgroundMap[date.weekday - 1] },
-      ]}
+    <PopupMenu
+      options={{
+        text: "Details",
+        textStyle: { marginRight: theme.margins.lg },
+        iconStyle: { tintColor: backgroundMap[date.weekday - 1] },
+        underlayColor: hex2rgba(backgroundMap[date.weekday - 1], 0.5),
+      }}
+      style={{ flex: 1 }}
       disabled={variant === "disabled"}
-    >
-      <ThemedText style={styles.dayTextDefault}>{date.day}</ThemedText>
-    </PressableOpacity>
+      menuTrigger={
+        <View
+          style={[
+            styles.dayContainerDefault,
+            {
+              backgroundColor: backgroundMap[date.weekday - 1],
+              opacity: variant === "disabled" ? 0.5 : 1,
+            },
+          ]}
+        >
+          <ThemedText style={styles.dayTextDefault}>{date.day}</ThemedText>
+        </View>
+      }
+    />
   );
 }
